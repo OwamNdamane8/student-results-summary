@@ -1,0 +1,68 @@
+package com.mycompany.mavenproject1;
+
+public class Mavenproject1 {
+
+    public static void main(String[] args) {
+        String names[] = {"John", "Amy", "Amanda", "Sol", "Tom"};
+        int [] marks = {25, 68, 88, 95, 33};
+        int FullMarks = 0;
+        double average;
+        int StudPass = 0;
+        int StudFail = 0;
+        double PassRate = 0;
+        int HighestMark = -1;
+        int PosMax = 0;
+        int countDist = 0;
+        double averagePassRate = 0;
+        double PassMarkAcc = 0;
+        
+        System.out.println("The Success Summary!");
+        System.out.println("==========================================================");
+        System.out.println(" ");
+        
+        for (int i=0; i<marks.length; i++){
+            FullMarks = marks[i]+FullMarks;
+        }
+        average = (double) FullMarks/marks.length;
+        System.out.printf("%-40s : %.2f\n","Average", average);
+        
+        for (int i=0; i<marks.length; i++){
+            if (marks[i]<50){
+                StudFail = StudFail + 1;
+            }
+            if (marks[i]>=50){
+                StudPass = StudPass + 1;
+                PassMarkAcc += marks[i];
+            }
+        }
+        System.out.printf("%-40s : %d\n","Number Of Students Failed", StudFail);
+        System.out.printf("%-40s : %d\n","Number Of Students Passed", StudPass);
+        
+        PassRate = ((double)StudPass/marks.length)*100;
+        System.out.printf("%-40s : %.2f%%\n","Pass Rate Percentage", PassRate);
+        
+        for (int i=0; i<marks.length; i++){
+            if (marks[i]>HighestMark){
+                HighestMark = marks[i];
+                PosMax = i;
+            }
+        }
+        System.out.printf("%-40s : %s, %d\n","Student With The Highest Mark", names[PosMax], marks[PosMax]);
+        
+        for (int i=0; i<marks.length; i++){
+            if (marks[i]>75){
+                countDist+=1;
+            }
+        }
+        System.out.printf("%-40s : %d\n","Number Of Students With Distinctions", countDist);
+        
+        if (StudPass > 0){
+            averagePassRate = ((double)PassMarkAcc/StudPass);
+        }
+        System.out.printf("%-40s : %.2f%%\n","Average Pass-Rate Percentage", averagePassRate);
+        
+        System.out.println(" ");
+        System.out.println("Thank You For Using Our App!");
+        System.out.println("================================================================");
+    }
+}
